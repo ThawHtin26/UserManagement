@@ -24,4 +24,14 @@
 		)
 	</insert>
 
+	<select id="findMany" resultType="MUSer">
+		select * from m_user
+	</select>
+
+
+
+
+
+
+
 </mapper>
