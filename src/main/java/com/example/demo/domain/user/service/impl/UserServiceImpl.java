@@ -28,4 +28,10 @@ public class UserServiceImpl implements UserService {
 		return mapper.findMany();
 	}
 
+	@Override
+	public MUser getUserOne(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.findOne(userId);
+	}
+
 }

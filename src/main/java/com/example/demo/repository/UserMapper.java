@@ -13,4 +13,6 @@ public interface UserMapper {
 	
 	public List<MUser> findMany();
 	
+	public MUser findOne(String userId);
+	
 }

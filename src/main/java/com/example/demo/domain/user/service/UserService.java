@@ -10,4 +10,6 @@ public interface UserService {
 	
 	public List<MUser> getUsers();
 	
+	public MUser getUserOne(String userId);
+	
 }
