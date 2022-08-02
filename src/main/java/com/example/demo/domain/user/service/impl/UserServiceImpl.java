@@ -34,4 +34,14 @@ public class UserServiceImpl implements UserService {
 		return mapper.findOne(userId);
 	}
 
+	@Override
+	public void updateUserOne(String userId, String password, String userName) {
+		mapper.updateOne(userId, password, userName);
+	}
+
+	@Override
+	public void deleteUserOne(String userId) {
+		int count = mapper.deleteOne(userId);
+	}
+
 }
