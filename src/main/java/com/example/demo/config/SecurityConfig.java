@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 @Configuration
@@ -46,6 +47,11 @@ public class SecurityConfig {
 				.usernameParameter("userId")
 				.passwordParameter("password")
 				.defaultSuccessUrl("/user/list",true);
+		
+		http.logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/login?logout");
 		
 		http.csrf().disable();
 		return http.build();
