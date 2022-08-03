@@ -3,6 +3,7 @@ package com.example.demo.domain.user.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.user.model.MUser;
@@ -15,10 +16,15 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper mapper;
 	
+	@Autowired
+	private PasswordEncoder encoder;
+	
 	@Override
 	public void signup(MUser user) {
 		user.setDepartmentId(1);
 		user.setRole("ROLE_GENERAL");
+		String rawPassword = user.getPassword();
+		user.setPassword(encoder.encode(rawPassword));
 		mapper.insertOne(user);
 	}
 
@@ -36,7 +42,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateUserOne(String userId, String password, String userName) {
-		mapper.updateOne(userId, password, userName);
+		String encryptPassword = encoder.encode(password);
+		mapper.updateOne(userId, encryptPassword, userName);
 	}
 
 	@Override
