@@ -9,7 +9,10 @@ layout:decorate="~{layout/layout}">
 	<div layout:fragment="menu" class="bg-light">
 		<ul class="nav nav-pills nav-stacked flex-column">
 		<li role="presentation">
-			<a class="nav-link" th:href="@{'/user/list'}">UserList</a>
+			<a class="nav-link" th:href="@{'/user/list'}">User List</a>
+		</li>
+		<li role="presentation">
+			<a class="nav-link" th:href="@{'/admin'}">Admin only</a>
 		</li>
 		</ul>
 	</div>

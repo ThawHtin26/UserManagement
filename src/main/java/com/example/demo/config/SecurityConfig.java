@@ -38,6 +38,7 @@ public class SecurityConfig {
 		http.authorizeRequests()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/user/signup").permitAll()
+			.antMatchers("/admin").hasAuthority("ROLE_ADMIN")
 			.anyRequest().authenticated();
 		
 		http.formLogin()
