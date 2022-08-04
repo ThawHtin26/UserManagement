@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{layout/layout}">
+layout:decorate="~{layout/layout}"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 </head>
@@ -11,7 +12,7 @@ layout:decorate="~{layout/layout}">
 		<li role="presentation">
 			<a class="nav-link" th:href="@{'/user/list'}">User List</a>
 		</li>
-		<li role="presentation">
+		<li role="presentation" sec:authorize="hasRole('ADMIN')">
 			<a class="nav-link" th:href="@{'/admin'}">Admin only</a>
 		</li>
 		</ul>
